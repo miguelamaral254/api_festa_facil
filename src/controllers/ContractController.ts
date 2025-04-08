@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { AppDataSource } from '../../ormconfig'
+import { AppDataSource } from '../ormconfig'
 import { Contract } from '../entities/Contract'
 import { Budget } from '../entities/Budget'
 

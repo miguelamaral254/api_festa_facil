@@ -1,7 +1,7 @@
 // controllers/BudgetController.ts
 import { Request, Response } from 'express'
 import { Budget } from '../entities/Budget'
-import { AppDataSource } from '../../ormconfig'
+import { AppDataSource } from '../ormconfig'
 // controllers/BudgetController.ts
 export const getBudgets = async (_req: Request, res: Response): Promise<void> => {
   try {
