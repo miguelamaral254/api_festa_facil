@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -22,12 +26,10 @@ jobs:
         run: npm install
 
       - name: 🧪 Run build (if needed)
-        run: |
-          echo "Sem etapa de build por enquanto" # ou `tsc` se compilar
+        run: echo "Sem etapa de build por enquanto"
 
       - name: 📂 Zip app for deployment
-        run: |
-          zip -r app.zip . -x "node_modules/*" ".git/*"
+        run: zip -r app.zip . -x "node_modules/*" ".git/*"
 
       - name: 🔐 Login no Azure
         uses: azure/login@v1
