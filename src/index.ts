@@ -9,9 +9,11 @@ app.use(express.json())
 app.use('/budgets', budgetRoutes)
 app.use('/contracts', contractRoutes)
 
+const PORT = process.env.PORT || 3000
+
 AppDataSource.then(() => {
   console.log('📦 Conectado ao banco de dados')
-  app.listen(3000, () => {
-    console.log('🚀 Servidor rodando em http://localhost:3000')
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`)
   })
 }).catch((err) => console.error('Erro ao conectar no banco', err))
