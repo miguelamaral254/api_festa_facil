@@ -9,7 +9,7 @@ app.use(express.json())
 app.use('/budgets', budgetRoutes)
 app.use('/contracts', contractRoutes)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 AppDataSource.then(() => {
   console.log('📦 Conectado ao banco de dados')
