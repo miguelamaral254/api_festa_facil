@@ -31,7 +31,8 @@ jobs:
 
       - name: 📂 Zip app for deployment
         run: |
-          zip -r app.zip . -x ".git/*" "node_modules/*" "*.github/*" "*.vscode/*" "*.env"
+          # Incluir os arquivos compilados na pasta dist
+          zip -r app.zip dist/ -x ".git/*" "node_modules/*" "*.github/*" "*.vscode/*" "*.env"
 
       - name: 🔐 Login no Azure
         uses: azure/login@v1
