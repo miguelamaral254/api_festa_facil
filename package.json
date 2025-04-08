@@ -1,8 +1,10 @@
 {
     "name": "festa-facil-api",
     "scripts": {
+        "start": "node dist/index.js",
         "dev": "ts-node-dev src/index.ts",
-        "start": "ts-node src/index.ts"
+        "build": "tsc"
+
     },
     "dependencies": {
         "dotenv": "^16.4.7",

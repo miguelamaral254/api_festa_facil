@@ -1,0 +1,43 @@
+name: Deploy Node App to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🟦 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🧪 Run build (if needed)
+        run: |
+          echo "Sem etapa de build por enquanto" # ou `tsc` se compilar
+
+      - name: 📂 Zip app for deployment
+        run: |
+          zip -r app.zip . -x "node_modules/*" ".git/*"
+
+      - name: 🔐 Login no Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: 🚀 Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          package: app.zip
