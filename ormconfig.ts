@@ -1,7 +1,8 @@
-import { DataSource } from 'typeorm'
-import { config } from 'dotenv'
-import { Budget } from './src/entities/Budget'
-import { Contract } from './src/entities/Contract'
+import { config } from "dotenv"
+import { DataSource } from "typeorm"
+import { Budget } from "./src/entities/Budget"
+import { Contract } from "./src/entities/Contract"
+
 
 config()
 
